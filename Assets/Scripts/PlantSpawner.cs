@@ -25,7 +25,7 @@ public class PlantSpawner : MonoBehaviour {
 			newPlant.plantSeed = Random.Range (0f, 20f);
 			newPlant.seedSpeed = Random.Range (0.2f, 0.6f);
 			newPlant.flowerScale = Random.Range (0.5f, 1.5f);
-			newPlant.SetFlowerColour(Random.ColorHSV(0,1,0.6f,1f,0.7f,1f));
+			newPlant.SetFlowerColour(Random.ColorHSV(0f,0.2f,0.6f,1f,0.7f,1f));
 			newPlant.transform.position = Vector3.Lerp(minPos,maxPos, Random.Range(0f,1f));
 		}
 	}
