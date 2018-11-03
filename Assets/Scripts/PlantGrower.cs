@@ -11,7 +11,6 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	Material vineMaterial;
 
-	[SerializeField]
 	List<VineSegment> vineSegments;
 
 	List<Vector3> vertices;
@@ -23,6 +22,9 @@ public class PlantGrower : MonoBehaviour {
 
 	[SerializeField]
 	Leaf leafPrefab;
+
+	[SerializeField]
+	Flower flower;
 
 	[SerializeField]
 	public float plantSeed = 0f;
@@ -128,8 +130,11 @@ public class PlantGrower : MonoBehaviour {
 			direction = Quaternion.Euler (0, 0, segment.angle) * direction;
 		}
 		//last segment
-		vertices [i * 2] = pos + Vector3.left * vineSegments [i].width;
-		vertices [i * 2 + 1] = pos + Vector3.right * vineSegments [i].width;
+		vertices [i * 2] = pos + leftAngle * direction * vineSegments [i].width;
+		vertices [i * 2 + 1] = pos + rightAngle * direction * vineSegments [i].width;
+		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
+		flower.SetScale (1f - growthRate);
+		flower.SetGrowth (1f - growthRate);
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
 
@@ -148,7 +153,7 @@ public class PlantGrower : MonoBehaviour {
 			segment.GrowLeaf (Time.deltaTime * growthRate * 0.7f);
 		}
 		tipCounter += Time.deltaTime * tipSpeed * growthRate * 0.3f;
-		if (tipCounter >1f) {
+		if (growthRate >0.1f && tipCounter >1f) {
 			tipCounter -= 1f;
 			Leaf.LeafSide newLeaf = Leaf.LeafSide.none;
 			leafCounter++;

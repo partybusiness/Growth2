@@ -55,5 +55,4 @@ public class Leaf : MonoBehaviour {
 		transform.localPosition = position;
 	}
 
-
 }
