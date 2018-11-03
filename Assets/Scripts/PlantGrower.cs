@@ -14,10 +14,8 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	List<VineSegment> vineSegments;
 
-	[SerializeField]
 	List<Vector3> vertices;
 	List<Vector2> uvs;
-	[SerializeField]
 	List<int> triangles;
 
 	[SerializeField]
@@ -32,6 +30,7 @@ public class PlantGrower : MonoBehaviour {
 		vertices = new List<Vector3> ();
 		triangles = new List<int> ();
 		vineSegments = new List<VineSegment> ();
+		uvs = new List<Vector2> ();
 		FirstSegment ();
 		AddSegment ();
 	}
@@ -40,6 +39,8 @@ public class PlantGrower : MonoBehaviour {
 		vineSegments.Add (new VineSegment ());
 		vertices.Add (new Vector3 ());
 		vertices.Add (new Vector3 ());
+		uvs.Add (new Vector2 ());
+		uvs.Add (new Vector2 ());
 	}
 
 	private void AddSegment() {
@@ -55,11 +56,15 @@ public class PlantGrower : MonoBehaviour {
 		//two vertices
 		vertices.Add (new Vector3 ());
 		vertices.Add (new Vector3 ());
+		//two uvs
+		uvs.Add (new Vector2 (0,0));
+		uvs.Add (new Vector2 (1,0));
 	}
 
 	private void GenVine() {
 		var pos = Vector3.zero;
 		var direction = Vector3.up;
+		var v = 0f;
 		int i = 0;
 		Quaternion rightAngle = Quaternion.Euler (0, 0, -90f);
 		Quaternion leftAngle = Quaternion.Euler (0, 0, 90f);
@@ -68,11 +73,16 @@ public class PlantGrower : MonoBehaviour {
 			vertices [i * 2] = pos + leftAngle * direction * segment.width;
 			vertices [i * 2 + 1] = pos + rightAngle * direction * segment.width;
 			pos += direction * segment.length;
+			uvs [i * 2] = new Vector2(0,v);
+			uvs [i * 2+1] = new Vector2(1,v);
+			v += 1f;
 			direction = Quaternion.Euler (0, 0, segment.angle) * direction;
 		}
 		//last segment
 		vertices [i * 2] = pos + Vector3.left * vineSegments [i].width;
 		vertices [i * 2 + 1] = pos + Vector3.right * vineSegments [i].width;
+		uvs [i * 2] = new Vector2(0,v);
+		uvs [i * 2+1] = new Vector2(1,v);
 
 		WrapUp ();
 	}
@@ -85,13 +95,15 @@ public class PlantGrower : MonoBehaviour {
 		if (vineSegments [vineSegments.Count - 1].width > vineSegments [0].maxWidth * 0.25f) {
 			AddSegment ();
 		}
-		growthRate *= 1f - Time.deltaTime * 0.01f;
+		growthRate *= 1f - Time.deltaTime * 0.05f;
 	}
 
 	private void WrapUp() {
 		vineMesh.SetVertices (vertices);
 		vineMesh.SetTriangles (triangles, 0);
+		vineMesh.SetUVs (0, uvs);
 		vineMesh.RecalculateNormals ();
+		vineMesh.RecalculateTangents ();
 		vineMesh.RecalculateBounds ();
 	}
 

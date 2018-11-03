@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class VineSegment {
 
-	public float length = 0.1f;
+	public float length = 0.0f;
 	public float width = 0.0f;
 	public float maxWidth = 0.1f;
-	public float maxLength = 1.3f;
+	public float maxLength = 0.6f;
 
 	public float angle = 0;
 
@@ -19,7 +19,7 @@ public class VineSegment {
 	}
 
 	public void Grow(float deltaRate) {
-		width = Mathf.MoveTowards(width,maxWidth,deltaRate * 0.3f);
+		width = Mathf.MoveTowards(width,maxWidth,deltaRate * 0.5f);
 		length = Mathf.MoveTowards(length,maxLength,deltaRate);
 	}
 
