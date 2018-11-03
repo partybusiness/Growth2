@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LeafMaterial
+  m_Name: LeftLeafMaterial
   m_Shader: {fileID: 4800000, guid: 618191debfdbc1947ab23785d8c39720, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _NORMALMAP
   m_LightmapFlags: 4
@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 6f2a3785e76011d4aaefb4f1ef367dde, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d6f038b7c54c654c96e24b3b99c52d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:

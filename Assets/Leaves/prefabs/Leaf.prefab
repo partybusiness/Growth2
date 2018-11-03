@@ -53,6 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212333676132738990}
+  leftSprite: {fileID: 21300000, guid: f61390365fc053544aa28febb9ddcbef, type: 3}
+  rightSprite: {fileID: 21300000, guid: 770a798e7d9dbbd41930c7b1e11bb154, type: 3}
+  leftMaterial: {fileID: 2100000, guid: d6aa0d759d5cc0447bdc00618cc49dfe, type: 2}
+  rightMaterial: {fileID: 2100000, guid: 7a4ec6f68bf062a499982b39f9e740e7, type: 2}
 --- !u!212 &212333676132738990
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -86,8 +90,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 37267c5d7c64dc442a8600ca46ddaec1, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 770a798e7d9dbbd41930c7b1e11bb154, type: 3}
   m_Color: {r: 0.56078434, g: 0.70980394, b: 0.5686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0

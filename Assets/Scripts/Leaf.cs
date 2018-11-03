@@ -15,6 +15,18 @@ public class Leaf : MonoBehaviour {
 	[SerializeField]
 	SpriteRenderer spriteRenderer;
 
+	[SerializeField]
+	Sprite leftSprite;
+
+	[SerializeField]
+	Sprite rightSprite;
+
+	[SerializeField]
+	Material leftMaterial;
+
+	[SerializeField]
+	Material rightMaterial;
+
 	private LeafSide _leafSide;
 
 	public LeafSide leafSide {
@@ -26,10 +38,12 @@ public class Leaf : MonoBehaviour {
 			_leafSide = value;
 			switch (value) {
 			case LeafSide.left:
-				transform.localScale = new Vector3 (-1, 1, 1);
+				spriteRenderer.sprite = leftSprite;
+				spriteRenderer.sharedMaterial = leftMaterial;
 				break;
 			case LeafSide.right:
-				transform.localScale = new Vector3 (1, 1, 1);
+				spriteRenderer.sprite = rightSprite;
+				spriteRenderer.sharedMaterial = rightMaterial;
 				break;
 			}
 		}
@@ -38,14 +52,7 @@ public class Leaf : MonoBehaviour {
 	public float scale {
 		
 		set {
-			switch (_leafSide) {
-			case LeafSide.left:
-				transform.localScale = new Vector3 (-1, 1, 1) * value;
-				break;
-			case LeafSide.right:
-				transform.localScale = new Vector3 (1, 1, 1) * value;
-				break;
-			}
+			transform.localScale = Vector3.one * value;
 		}
 	}
 

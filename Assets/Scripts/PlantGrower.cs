@@ -38,7 +38,8 @@ public class PlantGrower : MonoBehaviour {
 
 	float tipCounter = 0f;
 
-	int leafCounter = -5;
+	[HideInInspector]
+	public int leafCounter = -5;
 
 	[SerializeField]
 	float tipSpeed = 60f;
@@ -53,6 +54,8 @@ public class PlantGrower : MonoBehaviour {
 
 	[SerializeField]
 	AnimationCurve straightenCurve;
+
+	float goalAngle = 0f;
 
 	void Start () {
 		vineMesh = new Mesh ();
@@ -149,7 +152,7 @@ public class PlantGrower : MonoBehaviour {
 		flower.SetGrowth (1f - growthRate);
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
-		//if position is too low and pointing down, add to more straightening
+		//if position is too low and pointing down, add bend towards oppsite direction
 
 		WrapUp ();
 	}
@@ -160,7 +163,7 @@ public class PlantGrower : MonoBehaviour {
 			return;
 		for (int i = 0; i < vineSegments.Count; i++) {
 			var segment = vineSegments [i];
-			segment.StraightenStem (Time.deltaTime * growthRate * straightenCurve.Evaluate(i*1f/vineSegments.Count));
+			segment.StraightenStem (Time.deltaTime * growthRate * straightenCurve.Evaluate(i*1f/vineSegments.Count), goalAngle);
 			segment.GrowWidth (Time.deltaTime * growthRate * 0.2f);
 			segment.GrowLength (Time.deltaTime * growthRate);
 			segment.GrowLeaf (Time.deltaTime * growthRate * 0.7f);

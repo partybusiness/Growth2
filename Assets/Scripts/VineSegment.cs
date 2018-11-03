@@ -39,7 +39,7 @@ public class VineSegment {
 		leaf.scale = leafScale;
 	}
 
-	public void StraightenStem(float deltaRate) {
-		angle *= 1f - deltaRate;
+	public void StraightenStem(float deltaRate, float goalAngle) {
+		angle = ((angle - goalAngle)*(1f - deltaRate)) + goalAngle;
 	}
 }
