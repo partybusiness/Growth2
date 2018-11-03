@@ -70,7 +70,7 @@ Shader "Unlit/ReflectiveNormalMap"
                 half3 skyColor = DecodeHDR (skyData, unity_SpecCube0_HDR);
                 fixed4 c = 0;
                 //c.rgb = skyColor;
-                c.rgb = worldNormal *0.5 +0.5;
+                c.rgb = worldNormal.y *0.5 +0.5;
                 return c;
             }
             ENDCG

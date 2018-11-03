@@ -92,7 +92,7 @@ public class PlantGrower : MonoBehaviour {
 			var segment = vineSegments [i];
 			segment.Grow (Time.deltaTime * growthRate);
 		}
-		if (vineSegments [vineSegments.Count - 1].width > vineSegments [0].maxWidth * 0.25f) {
+		if (vineSegments [vineSegments.Count - 1].width > vineSegments [0].maxWidth * 0.02f) {
 			AddSegment ();
 		}
 		growthRate *= 1f - Time.deltaTime * 0.05f;
