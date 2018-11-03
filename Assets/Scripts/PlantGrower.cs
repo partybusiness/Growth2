@@ -26,6 +26,8 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	Flower flower;
 
+	public float flowerScale = 1f;
+
 	[SerializeField]
 	public float plantSeed = 0f;
 
@@ -40,6 +42,8 @@ public class PlantGrower : MonoBehaviour {
 
 	[SerializeField]
 	float tipSpeed = 60f;
+
+	public float seedSpeed = 0.3f;
 
 	[SerializeField]
 	float maxAngle = 10f;
@@ -141,10 +145,11 @@ public class PlantGrower : MonoBehaviour {
 			break;
 		}
 		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
-		flower.SetScale (Mathf.Clamp01(tipSeed));
+		flower.SetScale (Mathf.Clamp01(tipSeed) * flowerScale);
 		flower.SetGrowth (1f - growthRate);
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
+		//if position is too low and pointing down, add to more straightening
 
 		WrapUp ();
 	}
@@ -173,7 +178,7 @@ public class PlantGrower : MonoBehaviour {
 			AddSegment ( tipSeed * seedMult, newLeaf);
 			//if leaf counter>1f ??
 		}
-		tipSeed += Time.deltaTime*0.3f;
+		tipSeed += Time.deltaTime*seedSpeed;
 
 		//growthRate *= 1f - Time.deltaTime * 0.05f;
 	}
@@ -185,6 +190,10 @@ public class PlantGrower : MonoBehaviour {
 		vineMesh.RecalculateNormals ();
 		vineMesh.RecalculateTangents ();
 		vineMesh.RecalculateBounds ();
+	}
+
+	public void SetFlowerColour(Color newColour) {
+		flower.SetColor (newColour);
 	}
 
 	void Update () {
