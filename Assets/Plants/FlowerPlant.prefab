@@ -88,9 +88,11 @@ MonoBehaviour:
   leafPrefab: {fileID: 114694408816288246, guid: bf20ff22a3e0f4045ba74b0a4c694b39,
     type: 2}
   flower: {fileID: 114463351549141168}
+  flowerScale: 1
   plantSeed: 0
   seedMult: 6
   tipSpeed: 60
+  seedSpeed: 0.3
   maxAngle: 50
   growthCurve:
     serializedVersion: 2
@@ -150,12 +152,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3da2bbbb0890fc047bea162af8dba114, type: 3}
   - {fileID: 21300000, guid: 8910f15f9d18a864eb8513ee838d54dc, type: 3}
   - {fileID: 21300000, guid: c661f9421fd8bf14fa18176c88b159c8, type: 3}
-  - {fileID: 21300000, guid: c661f9421fd8bf14fa18176c88b159c8, type: 3}
+  - {fileID: 21300000, guid: 72cc3ae07300cf7438d0991809b27847, type: 3}
   normalSprites:
   - {fileID: 2800000, guid: 88eb74207009b02489f1af0fbcd7731c, type: 3}
   - {fileID: 2800000, guid: 1fd440b5dff91aa4ab3b55316ca939e1, type: 3}
   - {fileID: 2800000, guid: 7881237ce466dc24185e4e821ca3aca5, type: 3}
-  - {fileID: 2800000, guid: 7881237ce466dc24185e4e821ca3aca5, type: 3}
+  - {fileID: 2800000, guid: 0fe3d827accb41c4f9776b4927dd7f48, type: 3}
 --- !u!212 &212424542282497204
 SpriteRenderer:
   m_ObjectHideFlags: 1
