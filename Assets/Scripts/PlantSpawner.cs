@@ -11,7 +11,7 @@ public class PlantSpawner : MonoBehaviour {
 	Vector3 maxPos;
 
 	[SerializeField]
-	GameObject plantPrefab;
+	PlantGrower plantPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +22,7 @@ public class PlantSpawner : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.A)) {
 			var newPlant = Instantiate (plantPrefab);
+			newPlant.plantSeed = Random.Range (0f, 20f);
 			newPlant.transform.position = Vector3.Lerp(minPos,maxPos, Random.Range(0f,1f));
 		}
 	}

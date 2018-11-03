@@ -21,6 +21,30 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	float growthRate = 2f;
 
+	[SerializeField]
+	Leaf leafPrefab;
+
+	[SerializeField]
+	public float plantSeed = 0f;
+
+	[SerializeField]
+	float seedMult = 6f;
+
+	float tipSeed = 0f;
+
+	float tipCounter = 0f;
+
+	int leafCounter = -5;
+
+	[SerializeField]
+	float tipSpeed = 60f;
+
+	[SerializeField]
+	float maxAngle = 10f;
+
+	[SerializeField]
+	AnimationCurve growthCurve;
+
 	void Start () {
 		vineMesh = new Mesh ();
 		mf = gameObject.AddComponent<MeshFilter> ();
@@ -32,7 +56,7 @@ public class PlantGrower : MonoBehaviour {
 		vineSegments = new List<VineSegment> ();
 		uvs = new List<Vector2> ();
 		FirstSegment ();
-		AddSegment ();
+		AddSegment (tipSeed, Leaf.LeafSide.none);
 	}
 
 	private void FirstSegment() {
@@ -43,8 +67,22 @@ public class PlantGrower : MonoBehaviour {
 		uvs.Add (new Vector2 ());
 	}
 
-	private void AddSegment() {
-		vineSegments.Add (new VineSegment ());
+	private void AddSegment(float currentSeed, Leaf.LeafSide addLeaf) {
+		var newSegment = new VineSegment ();
+		vineSegments.Add ( newSegment );
+		//set angle based on perlin noise?
+		newSegment.angle = (Mathf.PerlinNoise (plantSeed, currentSeed) -0.5f) * maxAngle;
+		newSegment.leafSide = addLeaf;
+		switch (addLeaf) {
+		case Leaf.LeafSide.left:
+		case Leaf.LeafSide.right:
+			var newLeaf = Instantiate (leafPrefab, transform);
+			newLeaf.leafSide = addLeaf;
+			newLeaf.scale = 0f;
+			newSegment.leaf = newLeaf;
+			break;
+		}
+
 		//two triangles
 		triangles.Add (vertices.Count);
 		triangles.Add (vertices.Count-1);
@@ -72,6 +110,14 @@ public class PlantGrower : MonoBehaviour {
 			var segment = vineSegments [i];
 			vertices [i * 2] = pos + leftAngle * direction * segment.width;
 			vertices [i * 2 + 1] = pos + rightAngle * direction * segment.width;
+			switch (segment.leafSide) {
+			case Leaf.LeafSide.left:
+				segment.leaf.SetPosition (vertices [i * 2], direction);
+				break;
+			case Leaf.LeafSide.right:
+				segment.leaf.SetPosition (vertices [i * 2 + 1], direction);
+				break;
+			}
 			pos += direction * segment.length;
 			uvs [i * 2] = new Vector2(0,v);
 			uvs [i * 2+1] = new Vector2(1,v);
@@ -88,14 +134,31 @@ public class PlantGrower : MonoBehaviour {
 	}
 
 	private void GrowVines() {
+		growthRate = Mathf.Max(0f,growthCurve.Evaluate (tipSeed));
+		if (growthRate == 0f)
+			return;
 		for (int i = 0; i < vineSegments.Count; i++) {
 			var segment = vineSegments [i];
-			segment.Grow (Time.deltaTime * growthRate);
+			segment.GrowWidth (Time.deltaTime * growthRate);
+			segment.GrowLength (Time.deltaTime * growthRate);
+			segment.GrowLeaf (Time.deltaTime * growthRate);
 		}
-		if (vineSegments [vineSegments.Count - 1].width > vineSegments [0].maxWidth * 0.02f) {
-			AddSegment ();
+		tipCounter += Time.deltaTime * tipSpeed * growthRate * 0.3f;
+		if (tipCounter >1f) {
+			tipCounter -= 1f;
+			Leaf.LeafSide newLeaf = Leaf.LeafSide.none;
+			leafCounter++;
+			if (leafCounter == 6) newLeaf = Leaf.LeafSide.left;
+			if (leafCounter == 7) {
+				newLeaf = Leaf.LeafSide.right;
+				leafCounter = Random.Range (-4, 0);
+			}
+			AddSegment ( tipSeed * seedMult, newLeaf);
+			//if leaf counter>1f ??
 		}
-		growthRate *= 1f - Time.deltaTime * 0.05f;
+		tipSeed += Time.deltaTime*0.3f;
+
+		//growthRate *= 1f - Time.deltaTime * 0.05f;
 	}
 
 	private void WrapUp() {
@@ -109,6 +172,8 @@ public class PlantGrower : MonoBehaviour {
 
 	void Update () {
 		GrowVines ();
+		if (growthRate == 0f)
+			return;
 		GenVine ();
 	}
 }

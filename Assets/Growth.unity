@@ -204,9 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb201b915694e84c8063fd0cfc4a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPos: {x: -7.7, y: 0, z: 0}
-  maxPos: {x: 7.7, y: 0, z: 0}
-  plantPrefab: {fileID: 1284115008207510, guid: 7499d8f0d73d5b34e8276d24ee1f5489,
+  minPos: {x: -12, y: -2, z: 0}
+  maxPos: {x: 12, y: -2, z: 0}
+  plantPrefab: {fileID: 114236891345653478, guid: 7499d8f0d73d5b34e8276d24ee1f5489,
     type: 2}
 --- !u!4 &1584326335
 Transform:
@@ -298,13 +298,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1695494500}
-  m_LocalRotation: {x: -0.23330143, y: -0.26513863, z: 0.036261674, w: 0.9348567}
-  m_LocalPosition: {x: 7.8, y: 0, z: 0}
+  m_LocalRotation: {x: -0.9573007, y: -0.12694286, z: -0.2355821, w: 0.10937092}
+  m_LocalPosition: {x: -12.9, y: -2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -24.644001, y: -34.335003, z: 12.1640005}
+  m_LocalEulerAnglesHint: {x: -15.617001, y: -206.07199, z: 168.53001}
 --- !u!1 &1893894682
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

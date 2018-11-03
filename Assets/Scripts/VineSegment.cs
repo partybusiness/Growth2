@@ -14,13 +14,29 @@ public class VineSegment {
 	public int leftVIndex = 0;
 	public int rightVIndex = 1;
 
+	public Leaf leaf;
+
+	public float leafScale = 0f;
+
+	public Leaf.LeafSide leafSide;
+
 	public VineSegment() {
 		angle = Random.Range (-30f, 30f);
 	}
 
-	public void Grow(float deltaRate) {
-		width = Mathf.MoveTowards(width,maxWidth,deltaRate * 0.1f);
+	public void GrowWidth(float deltaRate) {
+		width = Mathf.MoveTowards(width,maxWidth,deltaRate);
+	}
+
+	public void GrowLength(float deltaRate) {
 		length = Mathf.MoveTowards(length,maxLength,deltaRate);
+	}
+
+	public void GrowLeaf(float deltaRate) {
+		if (leafSide == Leaf.LeafSide.none)
+			return;
+		leafScale = Mathf.MoveTowards(leafScale,1f,deltaRate);
+		leaf.scale = leafScale;
 	}
 
 }
