@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlantGrower : MonoBehaviour {
 
-	// Use this for initialization
+	public Mesh vineMesh;
+
+
+
 	void Start () {
-		
+		vineMesh = new Mesh ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}

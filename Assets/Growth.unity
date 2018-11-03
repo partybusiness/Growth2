@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5f4a811ecf9054ea8bd5bee5202383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vineMesh: {fileID: 0}
 --- !u!4 &1898937472
 Transform:
   m_ObjectHideFlags: 0
