@@ -132,6 +132,14 @@ public class PlantGrower : MonoBehaviour {
 		//last segment
 		vertices [i * 2] = pos + leftAngle * direction * vineSegments [i].width;
 		vertices [i * 2 + 1] = pos + rightAngle * direction * vineSegments [i].width;
+		switch (vineSegments [i].leafSide) {
+		case Leaf.LeafSide.left:
+			vineSegments [i].leaf.SetPosition (vertices [i * 2], direction);
+			break;
+		case Leaf.LeafSide.right:
+			vineSegments [i].leaf.SetPosition (vertices [i * 2 + 1], direction);
+			break;
+		}
 		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
 		flower.SetScale (Mathf.Clamp01(tipSeed));
 		flower.SetGrowth (1f - growthRate);
