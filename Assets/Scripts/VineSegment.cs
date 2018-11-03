@@ -6,8 +6,8 @@ public class VineSegment {
 
 	public float length = 0.0f;
 	public float width = 0.0f;
-	public float maxWidth = 0.1f;
-	public float maxLength = 0.3f;
+	public float maxWidth = 0.35f;
+	public float maxLength = 0.7f;
 
 	public float angle = 0;
 
@@ -39,4 +39,7 @@ public class VineSegment {
 		leaf.scale = leafScale;
 	}
 
+	public void StraightenStem(float deltaRate) {
+		angle *= 1f - deltaRate;
+	}
 }

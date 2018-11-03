@@ -45,6 +45,9 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	AnimationCurve growthCurve;
 
+	[SerializeField]
+	AnimationCurve straightenCurve;
+
 	void Start () {
 		vineMesh = new Mesh ();
 		mf = gameObject.AddComponent<MeshFilter> ();
@@ -139,9 +142,10 @@ public class PlantGrower : MonoBehaviour {
 			return;
 		for (int i = 0; i < vineSegments.Count; i++) {
 			var segment = vineSegments [i];
-			segment.GrowWidth (Time.deltaTime * growthRate);
+			segment.StraightenStem (Time.deltaTime * growthRate * straightenCurve.Evaluate(i*1f/vineSegments.Count));
+			segment.GrowWidth (Time.deltaTime * growthRate * 0.2f);
 			segment.GrowLength (Time.deltaTime * growthRate);
-			segment.GrowLeaf (Time.deltaTime * growthRate);
+			segment.GrowLeaf (Time.deltaTime * growthRate * 0.7f);
 		}
 		tipCounter += Time.deltaTime * tipSpeed * growthRate * 0.3f;
 		if (tipCounter >1f) {
