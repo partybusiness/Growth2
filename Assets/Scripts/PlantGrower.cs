@@ -133,7 +133,7 @@ public class PlantGrower : MonoBehaviour {
 		vertices [i * 2] = pos + leftAngle * direction * vineSegments [i].width;
 		vertices [i * 2 + 1] = pos + rightAngle * direction * vineSegments [i].width;
 		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
-		flower.SetScale (1f - growthRate);
+		flower.SetScale (Mathf.Clamp01(tipSeed));
 		flower.SetGrowth (1f - growthRate);
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
