@@ -5,7 +5,6 @@
 		_MainTex ("Texture", 2D) = "white" {}
 		_BumpMap("Normal Map", 2D) = "bump" {}
 		_LightMap("Lighting Map", 2D) = "white" {}
-		_Color("Tint", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -44,8 +43,6 @@
 			sampler2D _LightMap;
 			float4 _LightMap_ST;
 
-			fixed4 _Color;
-
 
 			v2f vert (float4 vertex : POSITION, float3 normal : NORMAL, float4 tangent : TANGENT, float2 uv : TEXCOORD0, float4 col : COLOR)
             {
@@ -79,8 +76,8 @@
 
                 half2 paintUV = half2( dot(i.tspace0, tnormal), dot(i.tspace1, tnormal))*0.5 +0.5;
                 fixed4 paintcol = tex2D(_LightMap, paintUV);
-
-				return col * paintcol * i.colour;
+                fixed4 tintedcol = lerp (i.colour, col, abs(col-0.5)*2);
+				return tintedcol * paintcol;
 			}
 			ENDCG
 		}
