@@ -289,30 +289,51 @@ MonoBehaviour:
   - {fileID: 114236891345653478, guid: 7499d8f0d73d5b34e8276d24ee1f5489, type: 2}
   - {fileID: 114236891345653478, guid: ad344c6bd40274b4c916a7129063c73f, type: 2}
   colours:
+  - colorOne: {r: 0.7794118, g: 0.183391, b: 0.183391, a: 1}
+    colorTwo: {r: 0.8455882, g: 0.27099994, b: 0.012435133, a: 1}
+  - colorOne: {r: 0.9775996, g: 0.9852941, b: 0.42744377, a: 1}
+    colorTwo: {r: 1, g: 0.93103445, b: 0, a: 1}
+  - colorOne: {r: 0.36764705, g: 1, b: 0.97383356, a: 1}
+    colorTwo: {r: 0.25, g: 0.50344837, b: 1, a: 1}
+  - colorOne: {r: 0.6721451, g: 0.16306229, b: 0.85294116, a: 1}
+    colorTwo: {r: 0.99264705, g: 0.08758653, b: 0.70552456, a: 1}
+  - colorOne: {r: 0.9044118, g: 0.24325562, b: 0, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 0.2509804, g: 0.5019608, b: 1, a: 1}
+    colorTwo: {r: 0.027573518, g: 0.22775842, b: 0.625, a: 1}
   - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
     colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
-  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
-    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0, b: 0.39310312, a: 1}
+    colorTwo: {r: 0.89705884, g: 0.5382353, b: 0, a: 1}
+  - colorOne: {r: 1, g: 0.9620689, b: 0.75, a: 1}
+    colorTwo: {r: 1, g: 0.8862069, b: 0.25, a: 1}
+  - colorOne: {r: 0.8866126, g: 0.36764705, b: 1, a: 1}
+    colorTwo: {r: 0.7103447, g: 0.25, b: 1, a: 1}
+  - colorOne: {r: 0.36764705, g: 0.84300196, b: 1, a: 1}
+    colorTwo: {r: 0.6764706, g: 1, b: 0.9732251, a: 1}
+  - colorOne: {r: 1, g: 0.6691177, b: 0.6691177, a: 1}
+    colorTwo: {r: 1, g: 0.93833673, b: 0.44117647, a: 1}
+  simKeys:
+  - key: 49
+    keyIndex: 0
+  - key: 50
+    keyIndex: 1
+  - key: 51
+    keyIndex: 2
+  - key: 52
+    keyIndex: 3
+  - key: 53
+    keyIndex: 4
+  - key: 54
+    keyIndex: 5
+  - key: 55
+    keyIndex: 6
+  - key: 56
+    keyIndex: 7
+  - key: 57
+    keyIndex: 8
+  - key: 48
+    keyIndex: 9
 --- !u!4 &1584326335
 Transform:
   m_ObjectHideFlags: 0
@@ -440,7 +461,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -180327499
+  randomSeed: -2136710194
   InitialModule:
     serializedVersion: 3
     enabled: 1

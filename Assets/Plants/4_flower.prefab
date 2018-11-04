@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4344013796695414}
   - component: {fileID: 114236891345653478}
   m_Layer: 0
-  m_Name: FlowerPlant2
+  m_Name: 4_flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   tipSpeed: 60
   seedSpeed: 0.3
   maxAngle: 50
+  stemThickness: 0.35
   growthCurve:
     serializedVersion: 2
     m_Curve:

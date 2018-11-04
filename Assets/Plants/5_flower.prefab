@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4344013796695414}
   - component: {fileID: 114236891345653478}
   m_Layer: 0
-  m_Name: FlowerPlant
+  m_Name: 5_flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   tipSpeed: 60
   seedSpeed: 0.3
   maxAngle: 50
+  stemThickness: 0.35
   growthCurve:
     serializedVersion: 2
     m_Curve:
@@ -138,7 +139,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  plantColour: {r: 0.1727941, g: 0.5, b: 0.19001548, a: 1}
+  plantColour: {r: 0.3220589, g: 0.53676474, b: 0.078936, a: 1}
 --- !u!114 &114463351549141168
 MonoBehaviour:
   m_ObjectHideFlags: 1
