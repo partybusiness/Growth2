@@ -284,6 +284,35 @@ MonoBehaviour:
   maxPos: {x: 25, y: -2, z: 0}
   plantPrefab: {fileID: 114236891345653478, guid: 7499d8f0d73d5b34e8276d24ee1f5489,
     type: 2}
+  numberOfKeys: 100
+  octavePlants:
+  - {fileID: 114236891345653478, guid: 7499d8f0d73d5b34e8276d24ee1f5489, type: 2}
+  - {fileID: 114236891345653478, guid: ad344c6bd40274b4c916a7129063c73f, type: 2}
+  colours:
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
+  - colorOne: {r: 1, g: 0.36764705, b: 0.36764705, a: 1}
+    colorTwo: {r: 1, g: 0.48275864, b: 0.25, a: 1}
 --- !u!4 &1584326335
 Transform:
   m_ObjectHideFlags: 0
@@ -411,7 +440,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1601732528
+  randomSeed: -180327499
   InitialModule:
     serializedVersion: 3
     enabled: 1

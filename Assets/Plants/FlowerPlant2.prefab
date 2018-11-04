@@ -138,7 +138,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  plantColour: {r: 0.68638444, g: 0.78676474, b: 0.57271844, a: 1}
+  plantColour: {r: 0.3220589, g: 0.53676474, b: 0.078936, a: 1}
 --- !u!114 &114463351549141168
 MonoBehaviour:
   m_ObjectHideFlags: 1

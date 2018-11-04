@@ -16,16 +16,28 @@ public class PlantSpawner : MonoBehaviour {
 
 	PlantGrower lastPlant;
 
-	Dictionary<KeyCode, PlantGrower> lastPlants;
+	Dictionary<int, PlantGrower> lastPlants;
 
 	KeyCode[] allKeys;
 
 	[SerializeField]
-	PlantGrower sourcePlants;
+	int numberOfKeys=100;
+
+	[SerializeField]
+	PlantGrower[] octavePlants;
+
+	[System.Serializable]
+	public class ColourRange {
+		public Color colorOne;
+		public Color colorTwo;
+	}
+
+	[SerializeField]
+	ColourRange[] colours;
 
 	// Use this for initialization
 	void Start () {
-		lastPlants = new Dictionary<KeyCode, PlantGrower> ();
+		lastPlants = new Dictionary<int, PlantGrower> ();
 		allKeys = new KeyCode[] {
 			KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F
 		};
@@ -34,9 +46,29 @@ public class PlantSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (MidiMaster.GetKeyDown (3)) {
+		for (int keyIndex = 0; keyIndex < numberOfKeys; keyIndex++) {
+			if (MidiMaster.GetKeyDown(keyIndex)) {
+				int octave = Mathf.FloorToInt(keyIndex / 12);
+				int keyInOctave = keyIndex % 12;
+
+				var newPlant = Instantiate (plantPrefab);
+				newPlant.plantSeed = Random.Range (0f, 20f);
+				newPlant.seedSpeed = 0.3f;
+				newPlant.flowerScale = Random.Range (0.5f, 1.5f); //adjust this according to attack?
+				newPlant.SetFlowerColour(Color.Lerp(colours[keyInOctave].colorOne,colours[keyInOctave].colorTwo,Random.Range(0f,1f)));
+				//newPlant.leafSpacing = Random.Range (-8, -3);
+				newPlant.leafCounter = Random.Range (-10, -3);
+				newPlant.transform.position = Vector3.Lerp(minPos,maxPos, (keyIndex*1f/numberOfKeys)+Random.Range(-0.1f,0.1f));//adjust this position?
+				lastPlants.Add(keyIndex, newPlant);
+			}
+			if (MidiMaster.GetKeyUp (keyIndex)) {
+				if (lastPlants.ContainsKey(keyIndex) && lastPlants[keyIndex]!=null) {
+					lastPlants[keyIndex].seedSpeed = 0.9f;
+					lastPlants.Remove(keyIndex);
+				}
+			}
 		}
-		foreach (var key in allKeys) {
+/*		foreach (var key in allKeys) {
 			if (Input.GetKeyDown(key)) {
 				var newPlant = Instantiate (plantPrefab);
 				newPlant.plantSeed = Random.Range (0f, 20f);
@@ -54,7 +86,7 @@ public class PlantSpawner : MonoBehaviour {
 					lastPlants.Remove(key);
 				}
 			}
-		}
+		}*/
 
 	}
 }
