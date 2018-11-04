@@ -95,8 +95,8 @@ MonoBehaviour:
   leafCounter: -5
   tipSpeed: 60
   seedSpeed: 0.3
-  maxAngle: 50
-  stemThickness: 0.35
+  maxAngle: 20
+  stemThickness: 0.1
   growthCurve:
     serializedVersion: 2
     m_Curve:

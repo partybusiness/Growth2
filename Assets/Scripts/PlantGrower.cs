@@ -29,11 +29,14 @@ public class PlantGrower : MonoBehaviour {
 
 	public float flowerScale = 1f;
 
-	[SerializeField]
+	[HideInInspector]
 	public float plantSeed = 0f;
 
 	[SerializeField]
 	float seedMult = 6f;
+
+	[HideInInspector]
+	public float growthMult = 1f;
 
 	float tipSeed = 0f;
 
@@ -47,6 +50,7 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	float tipSpeed = 60f;
 
+	[HideInInspector]
 	public float seedSpeed = 0.3f;
 
 	[SerializeField]
@@ -174,7 +178,7 @@ public class PlantGrower : MonoBehaviour {
 	}
 
 	private void GrowVines() {
-		growthRate = Mathf.Max(0f,growthCurve.Evaluate (tipSeed));
+		growthRate = Mathf.Max(0f,growthCurve.Evaluate (tipSeed)) * growthMult;
 		if (growthRate == 0f)
 			return;
 		for (int i = 0; i < vineSegments.Count; i++) {

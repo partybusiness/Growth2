@@ -95,8 +95,8 @@ MonoBehaviour:
   leafCounter: -5
   tipSpeed: 60
   seedSpeed: 0.3
-  maxAngle: 50
-  stemThickness: 0.35
+  maxAngle: 25
+  stemThickness: 0.2
   growthCurve:
     serializedVersion: 2
     m_Curve:
@@ -139,7 +139,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  plantColour: {r: 0.3220589, g: 0.53676474, b: 0.078936, a: 1}
+  plantColour: {r: 0.17246152, g: 0.64705884, b: 0.10942906, a: 1}
 --- !u!114 &114463351549141168
 MonoBehaviour:
   m_ObjectHideFlags: 1

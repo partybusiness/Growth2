@@ -11,10 +11,6 @@ public class PlantSpawner : MonoBehaviour {
 	[SerializeField]
 	Vector3 maxPos;
 
-	[SerializeField]
-	PlantGrower plantPrefab;
-
-	PlantGrower lastPlant;
 
 	Dictionary<int, PlantGrower> lastPlants;
 
@@ -53,17 +49,20 @@ public class PlantSpawner : MonoBehaviour {
 	}
 
 	void SpawnFlower(int keyIndex, float velocity) {
-		int octave = Mathf.FloorToInt(keyIndex / 12);
+		int octave = Mathf.FloorToInt(keyIndex*1f / 12);
 		int keyInOctave = keyIndex % 12;
 
-		var newPlant = Instantiate (plantPrefab);
+		var newPlant = Instantiate (octavePlants[octave]);
 		newPlant.plantSeed = Random.Range (0f, 20f);
 		newPlant.seedSpeed = 0.3f;
+		newPlant.growthMult = velocity*3f;
 		newPlant.flowerScale = Mathf.Lerp (0.5f, 1.5f, velocity); //adjust this according to attack?
 		newPlant.SetFlowerColour(Color.Lerp(colours[keyInOctave].colorOne,colours[keyInOctave].colorTwo,Random.Range(0f,1f)));
 		//newPlant.leafSpacing = Random.Range (-8, -3);
 		newPlant.leafCounter = Random.Range (-10, -3);
-		newPlant.transform.position = Vector3.Lerp(minPos,maxPos, (keyIndex*1f/numberOfKeys)+Random.Range(-0.1f,0.1f));//adjust this position?
+		newPlant.transform.position = Vector3.Lerp(minPos,maxPos, 
+			Mathf.InverseLerp(36,96,keyIndex)
+			+Random.Range(-0.1f,0.1f));//adjust this position?
 		lastPlants.Add(keyIndex, newPlant);
 	}
 
@@ -76,6 +75,7 @@ public class PlantSpawner : MonoBehaviour {
 
 	void CheckKey(int keyIndex) {
 		if (MidiMaster.GetKeyDown(keyIndex)) {
+			Debug.Log ("Key = " + keyIndex);
 			SpawnFlower (keyIndex, MidiMaster.GetKey (keyIndex));
 		}
 		if (MidiMaster.GetKeyUp (keyIndex)) {
