@@ -20,6 +20,9 @@ public class PlantSpawner : MonoBehaviour {
 
 	KeyCode[] allKeys;
 
+	[SerializeField]
+	PlantGrower sourcePlants;
+
 	// Use this for initialization
 	void Start () {
 		lastPlants = new Dictionary<KeyCode, PlantGrower> ();
@@ -38,7 +41,7 @@ public class PlantSpawner : MonoBehaviour {
 				var newPlant = Instantiate (plantPrefab);
 				newPlant.plantSeed = Random.Range (0f, 20f);
 				newPlant.seedSpeed = 0.3f;
-				newPlant.flowerScale = Random.Range (0.5f, 1.5f);
+				newPlant.flowerScale = Random.Range (0.5f, 1.5f); //adjust this according to attack
 				newPlant.SetFlowerColour(Random.ColorHSV(0f,0.2f,0.6f,1f,0.7f,1f));
 				//newPlant.leafSpacing = Random.Range (-8, -3);
 				newPlant.leafCounter = Random.Range (-10, -3);
