@@ -288,6 +288,13 @@ MonoBehaviour:
   octavePlants:
   - {fileID: 114236891345653478, guid: 7499d8f0d73d5b34e8276d24ee1f5489, type: 2}
   - {fileID: 114236891345653478, guid: ad344c6bd40274b4c916a7129063c73f, type: 2}
+  - {fileID: 114236891345653478, guid: 1236e20ba5b629f4786f1e409bf055c2, type: 2}
+  - {fileID: 114236891345653478, guid: 5546415c1ea67704698aefe67a85be1c, type: 2}
+  - {fileID: 114236891345653478, guid: 4900a67d9b4b92247bf86bb490f004a2, type: 2}
+  - {fileID: 114236891345653478, guid: fe2a00a809c65554f92df45e0bf7605c, type: 2}
+  - {fileID: 114236891345653478, guid: f40c529e5b0d26f42ae6f3c2c065e6fd, type: 2}
+  - {fileID: 114236891345653478, guid: 2393a703c21a7494d8ce88e9e738c7f7, type: 2}
+  - {fileID: 114236891345653478, guid: 0e9d2aed380fd394eb45dbc08f3eb319, type: 2}
   colours:
   - colorOne: {r: 0.7794118, g: 0.183391, b: 0.183391, a: 1}
     colorTwo: {r: 0.8455882, g: 0.27099994, b: 0.012435133, a: 1}
@@ -461,7 +468,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2136710194
+  randomSeed: -372325647
   InitialModule:
     serializedVersion: 3
     enabled: 1
