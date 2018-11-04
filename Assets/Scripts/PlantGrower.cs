@@ -38,6 +38,8 @@ public class PlantGrower : MonoBehaviour {
 
 	float tipCounter = 0f;
 
+	public float maxWidth = 0.35f;
+
 	[HideInInspector]
 	public int leafCounter = -5;
 
@@ -199,7 +201,12 @@ public class PlantGrower : MonoBehaviour {
 		flower.SetColor (newColour);
 	}
 
+	public void MoveBack() {
+		transform.Translate (Vector3.forward * Time.deltaTime);
+	}
+
 	void Update () {
+		MoveBack ();
 		GrowVines ();
 		if (growthRate == 0f)
 			return;

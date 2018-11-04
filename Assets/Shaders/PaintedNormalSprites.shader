@@ -76,6 +76,9 @@
 
                 half2 paintUV = half2( dot(i.tspace0, tnormal), dot(i.tspace1, tnormal))*0.5 +0.5;
                 fixed4 paintcol = tex2D(_LightMap, paintUV);
+                //col *= paintcol;
+                //col *=  i.colour;
+                //return 1-(1-col) + pow(paintcol,5);
                 //fixed4 tintedcol = lerp (i.colour, col, abs(col-0.5)*2);
 				//return tintedcol * paintcol;
 				return col * paintcol * i.colour;
