@@ -16,6 +16,7 @@ public class PlantGrower : MonoBehaviour {
 	List<Vector3> vertices;
 	List<Vector2> uvs;
 	List<int> triangles;
+	List<Color> vertexColours;
 
 	[SerializeField]
 	float growthRate = 2f;
@@ -57,6 +58,9 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	AnimationCurve straightenCurve;
 
+	[SerializeField]
+	Color plantColour;
+
 	float goalAngle = 0f;
 
 	void Start () {
@@ -66,6 +70,7 @@ public class PlantGrower : MonoBehaviour {
 		mr.sharedMaterial = vineMaterial;
 		mf.sharedMesh = vineMesh;
 		vertices = new List<Vector3> ();
+		vertexColours = new List<Color> ();
 		triangles = new List<int> ();
 		vineSegments = new List<VineSegment> ();
 		uvs = new List<Vector2> ();
@@ -77,6 +82,8 @@ public class PlantGrower : MonoBehaviour {
 		vineSegments.Add (new VineSegment ());
 		vertices.Add (new Vector3 ());
 		vertices.Add (new Vector3 ());
+		vertexColours.Add (plantColour);
+		vertexColours.Add (plantColour);
 		uvs.Add (new Vector2 ());
 		uvs.Add (new Vector2 ());
 	}
@@ -94,6 +101,7 @@ public class PlantGrower : MonoBehaviour {
 			newLeaf.leafSide = addLeaf;
 			newLeaf.scale = 0f;
 			newSegment.leaf = newLeaf;
+			newLeaf.colour = plantColour;
 			break;
 		}
 
@@ -108,6 +116,8 @@ public class PlantGrower : MonoBehaviour {
 		//two vertices
 		vertices.Add (new Vector3 ());
 		vertices.Add (new Vector3 ());
+		vertexColours.Add (plantColour);
+		vertexColours.Add (plantColour);
 		//two uvs
 		uvs.Add (new Vector2 (0,0));
 		uvs.Add (new Vector2 (1,0));
@@ -192,6 +202,7 @@ public class PlantGrower : MonoBehaviour {
 		vineMesh.SetVertices (vertices);
 		vineMesh.SetTriangles (triangles, 0);
 		vineMesh.SetUVs (0, uvs);
+		vineMesh.SetColors (vertexColours);
 		vineMesh.RecalculateNormals ();
 		vineMesh.RecalculateTangents ();
 		vineMesh.RecalculateBounds ();
@@ -203,6 +214,9 @@ public class PlantGrower : MonoBehaviour {
 
 	public void MoveBack() {
 		transform.Translate (Vector3.forward * Time.deltaTime);
+		//at some 
+		if (transform.position.z > 35)
+			Destroy (gameObject);
 	}
 
 	void Update () {

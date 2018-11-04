@@ -91,6 +91,8 @@ MonoBehaviour:
   flowerScale: 1
   plantSeed: 0
   seedMult: 6
+  maxWidth: 0.35
+  leafCounter: -5
   tipSpeed: 60
   seedSpeed: 0.3
   maxAngle: 50
@@ -136,6 +138,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  plantColour: {r: 0.56078434, g: 0.70980394, b: 0.5686275, a: 1}
 --- !u!114 &114463351549141168
 MonoBehaviour:
   m_ObjectHideFlags: 1

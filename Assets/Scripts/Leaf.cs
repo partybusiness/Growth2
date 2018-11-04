@@ -49,6 +49,12 @@ public class Leaf : MonoBehaviour {
 		}
 	}
 
+	public Color colour {
+		set {
+			spriteRenderer.color = value;
+		}
+	}
+
 	public float scale {
 		
 		set {

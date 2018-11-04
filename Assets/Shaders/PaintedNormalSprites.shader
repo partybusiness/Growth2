@@ -81,7 +81,7 @@
                 //return 1-(1-col) + pow(paintcol,5);
                 //fixed4 tintedcol = lerp (i.colour, col, abs(col-0.5)*2);
 				//return tintedcol * paintcol;
-				return col * paintcol * i.colour;
+				return col * paintcol * i.colour * clamp(1-i.worldPos.z/35.0, 0, 1);
 			}
 			ENDCG
 		}
