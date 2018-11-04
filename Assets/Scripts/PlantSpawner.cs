@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MidiJack;
 
 public class PlantSpawner : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class PlantSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (MidiMaster.GetKeyDown (3)) {
+		}
 		foreach (var key in allKeys) {
 			if (Input.GetKeyDown(key)) {
 				var newPlant = Instantiate (plantPrefab);
