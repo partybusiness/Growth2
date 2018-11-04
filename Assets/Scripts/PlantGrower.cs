@@ -53,6 +53,9 @@ public class PlantGrower : MonoBehaviour {
 	float maxAngle = 10f;
 
 	[SerializeField]
+	float stemThickness = 0.35f;
+
+	[SerializeField]
 	AnimationCurve growthCurve;
 
 	[SerializeField]
@@ -93,6 +96,7 @@ public class PlantGrower : MonoBehaviour {
 		vineSegments.Add ( newSegment );
 		//set angle based on perlin noise?
 		newSegment.angle = (Mathf.PerlinNoise (plantSeed, currentSeed) -0.5f) * maxAngle;
+		newSegment.maxWidth = stemThickness;
 		newSegment.leafSide = addLeaf;
 		switch (addLeaf) {
 		case Leaf.LeafSide.left:
