@@ -52,14 +52,14 @@ public class PlantSpawner : MonoBehaviour {
 		};
 	}
 
-	void SpawnFlower(int keyIndex) {
+	void SpawnFlower(int keyIndex, float velocity) {
 		int octave = Mathf.FloorToInt(keyIndex / 12);
 		int keyInOctave = keyIndex % 12;
 
 		var newPlant = Instantiate (plantPrefab);
 		newPlant.plantSeed = Random.Range (0f, 20f);
 		newPlant.seedSpeed = 0.3f;
-		newPlant.flowerScale = Random.Range (0.5f, 1.5f); //adjust this according to attack?
+		newPlant.flowerScale = Mathf.Lerp (0.5f, 1.5f, velocity); //adjust this according to attack?
 		newPlant.SetFlowerColour(Color.Lerp(colours[keyInOctave].colorOne,colours[keyInOctave].colorTwo,Random.Range(0f,1f)));
 		//newPlant.leafSpacing = Random.Range (-8, -3);
 		newPlant.leafCounter = Random.Range (-10, -3);
@@ -76,7 +76,7 @@ public class PlantSpawner : MonoBehaviour {
 
 	void CheckKey(int keyIndex) {
 		if (MidiMaster.GetKeyDown(keyIndex)) {
-			SpawnFlower (keyIndex);
+			SpawnFlower (keyIndex, MidiMaster.GetKey (keyIndex));
 		}
 		if (MidiMaster.GetKeyUp (keyIndex)) {
 			ReleaseFlower (keyIndex);
@@ -85,7 +85,7 @@ public class PlantSpawner : MonoBehaviour {
 
 	void CheckSimKey(SimKey simkey) {
 		if (Input.GetKeyDown(simkey.key)) {
-			SpawnFlower (simkey.keyIndex);
+			SpawnFlower (simkey.keyIndex, Random.Range(0f,1f));
 		}
 		if (Input.GetKeyUp (simkey.key)) {
 			ReleaseFlower (simkey.keyIndex);
