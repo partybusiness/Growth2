@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1284115008207510}
+  m_IsPrefabParent: 1
+--- !u!1 &1284115008207510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4344013796695414}
+  - component: {fileID: 114236891345653478}
+  m_Layer: 0
+  m_Name: FlowerPlant2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1475339167936582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4181489357223698}
+  - component: {fileID: 114463351549141168}
+  - component: {fileID: 212424542282497204}
+  m_Layer: 0
+  m_Name: Flower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4181489357223698
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475339167936582}
+  m_LocalRotation: {x: -0, y: -0, z: -0.10192455, w: -0.99479216}
+  m_LocalPosition: {x: 1.86397, y: 20.627165, z: -0.4307699}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4344013796695414}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 371.7}
+--- !u!4 &4344013796695414
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284115008207510}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4181489357223698}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114236891345653478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284115008207510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5f4a811ecf9054ea8bd5bee5202383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vineMesh: {fileID: 0}
+  vineMaterial: {fileID: 2100000, guid: b25978236c916734886fea96dc22e54f, type: 2}
+  growthRate: 0.1
+  leafPrefab: {fileID: 114694408816288246, guid: bf20ff22a3e0f4045ba74b0a4c694b39,
+    type: 2}
+  flower: {fileID: 114463351549141168}
+  flowerScale: 1
+  plantSeed: 0
+  seedMult: 6
+  maxWidth: 0.35
+  leafCounter: -5
+  tipSpeed: 60
+  seedSpeed: 0.3
+  maxAngle: 50
+  growthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.0041503906
+      value: 1.018753
+      inSlope: 0.12294444
+      outSlope: 0.12294444
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.8338783
+      value: 1.0064017
+      inSlope: -0.40203932
+      outSlope: -0.40203932
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0041482
+      value: 0.006251525
+      inSlope: -8.200876
+      outSlope: -8.200876
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  straightenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.7546928
+      inSlope: -2.4276993
+      outSlope: -2.4276993
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0041473
+      value: 0.00000076461583
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  plantColour: {r: 0.68638444, g: 0.78676474, b: 0.57271844, a: 1}
+--- !u!114 &114463351549141168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475339167936582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d098f67e88bd4343925691cd7e1fa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteDisplay: {fileID: 212424542282497204}
+  sprites:
+  - {fileID: 21300000, guid: 3da2bbbb0890fc047bea162af8dba114, type: 3}
+  - {fileID: 21300000, guid: 8910f15f9d18a864eb8513ee838d54dc, type: 3}
+  - {fileID: 21300000, guid: c661f9421fd8bf14fa18176c88b159c8, type: 3}
+  - {fileID: 21300000, guid: 72cc3ae07300cf7438d0991809b27847, type: 3}
+  normalSprites:
+  - {fileID: 2800000, guid: 88eb74207009b02489f1af0fbcd7731c, type: 3}
+  - {fileID: 2800000, guid: 1fd440b5dff91aa4ab3b55316ca939e1, type: 3}
+  - {fileID: 2800000, guid: 7881237ce466dc24185e4e821ca3aca5, type: 3}
+  - {fileID: 2800000, guid: 0fe3d827accb41c4f9776b4927dd7f48, type: 3}
+--- !u!212 &212424542282497204
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475339167936582}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 898c2741bc3ab0745bf91a080046cda3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 6acdd09b93238514eb77c2233b4403fa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 20.48, y: 20.48}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
