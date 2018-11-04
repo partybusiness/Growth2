@@ -21,7 +21,7 @@ public class Flower : MonoBehaviour {
 		transform.localPosition = position;
 	}
 
-	public void SetGrowth(float newGrowth) {
+	public bool SetGrowth(float newGrowth) {
 		int index = Mathf.Clamp(Mathf.FloorToInt (newGrowth * sprites.Length),0,sprites.Length-1);
 		if (lastIndex != index) {
 			spriteDisplay.sprite = sprites [index];
@@ -29,8 +29,10 @@ public class Flower : MonoBehaviour {
 			lastIndex = index;
 			if (index == sprites.Length-1) {
 				StartCoroutine (ShootPollen ());
+				return true;
 			}
 		}
+		return false;
 	}
 
 	IEnumerator ShootPollen() {

@@ -91,6 +91,7 @@ MonoBehaviour:
   flowerScale: 1
   plantSeed: 0
   seedMult: 6
+  growthMult: 1
   maxWidth: 10
   leafCounter: -5
   tipSpeed: 60
@@ -139,7 +140,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  plantColour: {r: 0.06660899, g: 0.64705884, b: 0.14266787, a: 1}
+  plantColour: {r: 0.25454155, g: 0.32352942, b: 0.25454155, a: 1}
+  startSound: {fileID: 8300000, guid: 50432764f8be8b643bc38fb715a2e5e8, type: 3}
+  leafSound: {fileID: 8300000, guid: 5ae4e91fc8618b045a202e640e5c191c, type: 3}
+  flowerSound: {fileID: 8300000, guid: 2639ee0384131cb41b1826205b311eea, type: 3}
 --- !u!114 &114463351549141168
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,6 +53,7 @@ public class PlantSpawner : MonoBehaviour {
 		int keyInOctave = keyIndex % 12;
 
 		var newPlant = Instantiate (octavePlants[octave]);
+		newPlant.SetAudio (keyInOctave, velocity);
 		newPlant.plantSeed = Random.Range (0f, 20f);
 		newPlant.seedSpeed = 0.3f;
 		newPlant.growthMult = velocity*3f;

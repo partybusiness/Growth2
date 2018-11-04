@@ -68,7 +68,22 @@ public class PlantGrower : MonoBehaviour {
 	[SerializeField]
 	Color plantColour;
 
+	[SerializeField]
+	AudioClip startSound;
+
+	[SerializeField]
+	AudioClip leafSound;
+
+	[SerializeField]
+	AudioClip flowerSound;
+
 	float goalAngle = 0f;
+
+	static float movementSpeed = 1f;
+
+	const float movementChange = 0.1f;
+
+	AudioSource audioSource;
 
 	void Start () {
 		vineMesh = new Mesh ();
@@ -83,6 +98,23 @@ public class PlantGrower : MonoBehaviour {
 		uvs = new List<Vector2> ();
 		FirstSegment ();
 		AddSegment (tipSeed, Leaf.LeafSide.none);
+		movementSpeed += movementChange;
+	}
+
+	public void SetAudio(int note, float velocity) {
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.bypassEffects = true;
+		audioSource.bypassListenerEffects = true;
+		audioSource.bypassReverbZones = true;
+		audioSource.dopplerLevel = 0;
+		audioSource.playOnAwake = false;
+		audioSource.loop = false;
+		audioSource.spatialBlend = 0;
+
+		audioSource.pitch = Mathf.Pow (1.05946f, note);
+		audioSource.volume = velocity*0.1f;
+
+		audioSource.PlayOneShot (startSound);
 	}
 
 	private void FirstSegment() {
@@ -106,6 +138,7 @@ public class PlantGrower : MonoBehaviour {
 		case Leaf.LeafSide.left:
 		case Leaf.LeafSide.right:
 			var newLeaf = Instantiate (leafPrefab, transform);
+			audioSource.PlayOneShot (leafSound);
 			newLeaf.leafSide = addLeaf;
 			newLeaf.scale = 0f;
 			newSegment.leaf = newLeaf;
@@ -169,7 +202,9 @@ public class PlantGrower : MonoBehaviour {
 		}
 		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
 		flower.SetScale (Mathf.Clamp01(tipSeed) * flowerScale);
-		flower.SetGrowth (1f - growthRate);
+		if (flower.SetGrowth (1f - growthRate)) {
+			audioSource.PlayOneShot (flowerSound);
+		}
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
 		//if position is too low and pointing down, add bend towards oppsite direction
@@ -221,10 +256,12 @@ public class PlantGrower : MonoBehaviour {
 	}
 
 	public void MoveBack() {
-		transform.Translate (Vector3.forward * Time.deltaTime);
+		transform.Translate (Vector3.forward * Time.deltaTime * movementSpeed);
 		//at some 
-		if (transform.position.z > 35)
+		if (transform.position.z > 35f) {
+			movementSpeed -= movementChange;
 			Destroy (gameObject);
+		}
 	}
 
 	void Update () {
