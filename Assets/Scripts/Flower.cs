@@ -27,6 +27,18 @@ public class Flower : MonoBehaviour {
 			spriteDisplay.sprite = sprites [index];
 			spriteDisplay.material.SetTexture ("_BumpMap", normalSprites [index]);
 			lastIndex = index;
+			if (index == sprites.Length-1) {
+				StartCoroutine (ShootPollen ());
+			}
+		}
+	}
+
+	IEnumerator ShootPollen() {
+		yield return new WaitForSeconds (0f);
+		for (int i = 0; i < 3; i++) {
+			yield return new WaitForSeconds (0.02f);
+			PollenParticles.instance.EmitPollen (transform.TransformPoint(new Vector3(-1,8,0)), transform.up, spriteDisplay.color);
+			PollenParticles.instance.EmitPollen (transform.TransformPoint(new Vector3(-1,8,0)), transform.up, spriteDisplay.color);
 		}
 	}
 

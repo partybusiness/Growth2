@@ -82,8 +82,8 @@ public class PlantGrower : MonoBehaviour {
 		vineSegments.Add (new VineSegment ());
 		vertices.Add (new Vector3 ());
 		vertices.Add (new Vector3 ());
-		vertexColours.Add (plantColour);
-		vertexColours.Add (plantColour);
+		vertexColours.Add (Color.black);
+		vertexColours.Add (Color.black);
 		uvs.Add (new Vector2 ());
 		uvs.Add (new Vector2 ());
 	}
