@@ -46,6 +46,8 @@ public class PlantSpawner : MonoBehaviour {
 		allKeys = new KeyCode[] {
 			KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F
 		};
+		MidiDriver.Instance.noteOnDelegate += HandleKeyPress;
+		MidiDriver.Instance.noteOffDelegate += HandleKeyRelease;
 	}
 
 	void SpawnFlower(int keyIndex, float velocity) {
@@ -76,7 +78,6 @@ public class PlantSpawner : MonoBehaviour {
 
 	void CheckKey(int keyIndex) {
 		if (MidiMaster.GetKeyDown(keyIndex)) {
-			Debug.Log ("Key = " + keyIndex);
 			SpawnFlower (keyIndex, MidiMaster.GetKey (keyIndex));
 		}
 		if (MidiMaster.GetKeyUp (keyIndex)) {
@@ -93,12 +94,20 @@ public class PlantSpawner : MonoBehaviour {
 		}
 	}
 
+	void HandleKeyPress(MidiChannel channel, int index, float velocity) {
+		SpawnFlower (index, velocity);
+	}
+
+	void HandleKeyRelease(MidiChannel channel, int index) {
+		ReleaseFlower (index);
+	}
+
 
 	void Update () {
 
-		for (int keyIndex = 0; keyIndex < numberOfKeys; keyIndex++) {
+		/*for (int keyIndex = 0; keyIndex < numberOfKeys; keyIndex++) {
 			CheckKey (keyIndex);
-		}
+		}*/
 
 		foreach (var simKey in simKeys) {
 			CheckSimKey (simKey);
