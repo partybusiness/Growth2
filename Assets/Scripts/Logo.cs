@@ -39,13 +39,13 @@ public class Logo : MonoBehaviour {
 
     void FadeIn ()
     {
-        colour.a += fadeSpeed;
+		colour.a = Mathf.Clamp01(colour.a+fadeSpeed);
         spriteRenderer.color = colour;
     }
 
     void FadeOut()
     {
-        colour.a -= fadeSpeed;
+		colour.a = Mathf.Clamp01(colour.a-fadeSpeed);
         spriteRenderer.color = colour;
     }
 }

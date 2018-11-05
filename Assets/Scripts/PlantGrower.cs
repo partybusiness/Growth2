@@ -102,6 +102,7 @@ public class PlantGrower : MonoBehaviour {
 	}
 
 	public void SetAudio(int note, float velocity) {
+		return;
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.bypassEffects = true;
 		audioSource.bypassListenerEffects = true;
@@ -114,7 +115,7 @@ public class PlantGrower : MonoBehaviour {
 		audioSource.pitch = Mathf.Pow (1.05946f, note);
 		audioSource.volume = velocity*0.1f;
 
-		audioSource.PlayOneShot (startSound);
+		//audioSource.PlayOneShot (startSound);
 	}
 
 	private void FirstSegment() {
@@ -138,7 +139,7 @@ public class PlantGrower : MonoBehaviour {
 		case Leaf.LeafSide.left:
 		case Leaf.LeafSide.right:
 			var newLeaf = Instantiate (leafPrefab, transform);
-			audioSource.PlayOneShot (leafSound);
+			//audioSource.PlayOneShot (leafSound);
 			newLeaf.leafSide = addLeaf;
 			newLeaf.scale = 0f;
 			newSegment.leaf = newLeaf;
@@ -203,7 +204,7 @@ public class PlantGrower : MonoBehaviour {
 		flower.SetPosition ((vertices [i * 2] + vertices [i * 2+1])/2f, direction);
 		flower.SetScale (Mathf.Clamp01(tipSeed) * flowerScale);
 		if (flower.SetGrowth (1f - growthRate)) {
-			audioSource.PlayOneShot (flowerSound);
+			//audioSource.PlayOneShot (flowerSound);
 		}
 		uvs [i * 2] = new Vector2(0,v);
 		uvs [i * 2+1] = new Vector2(1,v);
