@@ -6,7 +6,9 @@ using MidiJack;
 public class Logo : MonoBehaviour {
 
     public float timeUntilFadeIn = 10F;
-    public float fadeSpeed = 0.01F;
+    public float fadeSpeed = 0.1F;
+
+    public bool fading = true;
 
     SpriteRenderer spriteRenderer;
     Color colour;
@@ -39,13 +41,13 @@ public class Logo : MonoBehaviour {
 
     void FadeIn ()
     {
-		colour.a = Mathf.Clamp01(colour.a+fadeSpeed);
+		colour.a = Mathf.Clamp01(colour.a+fadeSpeed * Time.deltaTime);
         spriteRenderer.color = colour;
     }
 
     void FadeOut()
     {
-		colour.a = Mathf.Clamp01(colour.a-fadeSpeed);
+		colour.a = Mathf.Clamp01(colour.a-fadeSpeed * Time.deltaTime);
         spriteRenderer.color = colour;
     }
 }
